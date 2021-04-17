@@ -25,9 +25,9 @@ Planos inativos:
         <td><%= plan.title %></td>
         <td><%= plan.active == true ? 'sim' : 'não' %></td>
         <td><%= plan.description %></td>
-        <td><%= link_to 'Show', plan %></td>
-        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', plan %></td>
+        <td><%= link_to 'Editar', edit_plan_path(plan) %></td>
+        <td><%= link_to 'Deletar', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +35,4 @@ Planos inativos:
 
 <hr>
 
-<%= link_to 'New Plan', new_plan_path %>
+<%= link_to 'Novo Plano', new_plan_path %>
