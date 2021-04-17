@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="color: blue;">Planos de Operadora</h1>
+
+Planos ativos: 
+<%= @plans.actives.count %>
+<br>
+Planos inativos: 
+<%= @plans.inactives.count %>
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Ativo</th>
+      <th>Descrição</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.title %></td>
+        <td><%= plan.active == true ? 'sim' : 'não' %></td>
+        <td><%= plan.description %></td>
+        <td><%= link_to 'Show', plan %></td>
+        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plan', new_plan_path %>
