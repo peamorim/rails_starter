@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>City</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.city %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
+
+<br>
+<br>
+<hr>
+<% @single_items.each do |item| %>
+  <div>
+    Item: <%= item['name'] %>
+    <br>
+    Maior Valor: R$ <%= item['max_price'] %> 
+    <br>
+    Cidade: <%= item['max_city'] %>
+    <br>
+    Menor Valor: R$ <%= item['min_price'] %>
+    <br>
+    Cidade: <%= item['min_city'] %>
+    <br>
+    <% @lucro = (item['max_price'].to_f - item['min_price'].to_f) * 0.955 %>
+    Lucro: R$ <%= number_to_currency(@lucro, unit: "R$") %>
+    <br>
+    <br>
+    Investimento: R$ 4.500.000,00
+    <br>
+    Lucro Total: <%= number_to_currency(4500000/@lucro, unit: "R$") %>
+
+  </div>
+  <hr>
+<% end %>
